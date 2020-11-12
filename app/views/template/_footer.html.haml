@@ -1,0 +1,27 @@
+.footer
+  .footer__content
+    .nav
+      .ul.footer-global-nav
+        %li.nav-envelope
+          = link_to root_path, method: :get do
+            %i.far.fa-envelope
+        %li.nav-info-circle
+          = link_to root_path, method: :get do
+            %i.fas.fa-info-circle
+        %li.nav-share-alt
+          = link_to root_path, method: :get do
+            %i.fas.fa-share-alt
+            
+        .footer-nav-list
+          %li.nav-facebook
+            = link_to root_path, method: :get do
+              %i.fab.fa-facebook-f
+          %li.nav-twitter
+            = link_to root_path, method: :get do
+              %i.fab.fa-twitter
+          %li.nav-instagram
+            = link_to root_path, method: :get do
+              %i.fab.fa-instagram
+          %li.nav-home
+            = link_to root_path, method: :get do
+              %i.fas.fa-home

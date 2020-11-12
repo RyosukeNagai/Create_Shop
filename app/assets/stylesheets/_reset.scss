@@ -69,7 +69,9 @@ ol,
 ul {
 	list-style:none;
 }
-
+a:hover {
+	list-style: none;
+}
 caption,
 th {
 	text-align:left;

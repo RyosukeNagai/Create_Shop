@@ -1,0 +1,18 @@
+.header
+  .nav
+    .ul.global-nav
+      %li.nav-seach
+        = link_to root_path, method: :get do
+          %i.fas.fa-search
+      .nav-list
+        %li
+          = link_to ' HOME', root_path, class: 'nav-list-home'
+          = link_to ' ABOUT', "#", class: 'nav-list-about'
+          = link_to ' CATEGORY', "#", class: 'nav-list-category'
+      %li.nav-login
+        = link_to new_user_registration_path, method: :get do
+          %p.nav-login__title 
+            #{current_user.first_name}様
+      %li.nav-cart
+        = link_to new_user_registration_path, method: :get do
+          %i.fas.fa-shopping-cart
