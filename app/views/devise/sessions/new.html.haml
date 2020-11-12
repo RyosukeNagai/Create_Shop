@@ -1,0 +1,22 @@
+.login
+  .login__title
+    %h2 
+      %b 会員ログイン
+  .login-main
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-group
+        = f.label :メールアドレス
+        %i.fas.fa-envelope
+        = f.email_field :email, {autofocus: true, autocomplete: "email", placeholder: "sample@stores.jp",class: 'form-group__input'}
+
+      .form-group
+        = f.label :パスワード　　
+        %i.fas.fa-key
+        = f.password_field :password,{autocomplete: "new-password",placeholder: "6文字以上の半角英数字",class:'form-group__input',id:"password"}
+      .actions
+        = f.submit "ログイン", class: "btn btn-primary btn-lg btn-block"
+        .actions__link
+          = link_to "新規登録はこちら", new_registration_path(resource_name)
+          %br/
+        .actions__link
+          = link_to "ストアオーナー様はこちら", new_registration_path(resource_name)

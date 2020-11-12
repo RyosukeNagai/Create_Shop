@@ -1,0 +1,21 @@
+.done
+  .done__title
+    %h2 
+      %b 会員登録完了!
+  .done-main
+    .done-main__title
+      %p
+        %b
+          = "#{@user.first_name} #{@user.last_name}"
+          様
+          %br/
+          会員登録ありがとうございます。
+      %p.sub-title
+        Create_shop
+        %br/
+        でのお買い物をどうぞお楽しみください。
+    .done_link
+      = link_to "ストアトップへ"
+    %br/
+    .done_link
+      = link_to "マイページへ"

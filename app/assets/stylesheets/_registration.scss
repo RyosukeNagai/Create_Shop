@@ -1,0 +1,173 @@
+/* login */
+.login {
+	width: 880px;
+	margin: 0 auto;
+	margin-top: 50px;
+	&__title {
+	    font-size: 25px;
+		letter-spacing: 5px;
+		text-align: center;
+		padding-bottom: 20px;
+		border-bottom: 2px solid #F5F5F5;
+	}
+}
+
+.login-main{
+  width: 880px;
+}
+
+.form-group{
+  margin-bottom: 0px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: left;
+  border-bottom: 2px solid #F5F5F5;
+  /* 必須 */ 
+  &__require{
+    background: #F0F8FF;
+    margin: 0 0 0 8px;
+    padding: 2px 10px;
+    border-radius: 2px;
+    color: rgba(30,144,255,1);
+    font-size: 12px;
+    display: inline-block;
+    font-weight: bold;
+  }
+  /* 入力フォーム */
+  &__input{
+    width: 100%;
+    margin: 8px 0 0;
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+    box-sizing: border-box;
+
+/* ハーフサイズ入力フォーム */
+    &--half {
+      width: 21%;
+      margin: 8px 0 0;
+      height: 48px;
+      padding: 10px 16px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+      line-height: 1.5;
+      font-size: 16px;
+      box-sizing: border-box;
+      margin-left: 10%;
+  & label{
+    font-weight: 600;
+    display: inline-block;
+    touch-action: manipulation;
+    font-size: 16px;
+  }
+ }
+}
+/* 入力フォーム */
+  &__input{
+    width: 60%;
+    margin-left: 10%;
+    height: 45px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+    box-sizing: border-box;
+    }
+  }
+/* ボタン */
+.actions {
+    width: 350px;
+    margin: 0 auto;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 50px;
+	&__link {
+	  margin-top: 10px;
+	  font-size: 15px;
+	}
+}
+.btn-primary {
+    color: #fff;
+    background-color: rgba(30,144,255,1);
+    border-color: #357ebd;
+    height: 50px;
+    font-size: 15px;
+}
+
+/* sign-in */
+.sign {
+	width: 880px;
+	margin: 0 auto;
+	margin-top: 50px;
+	&__title {
+		letter-spacing: 5px;
+		text-align: center;
+		padding-bottom: 20px;
+		border-bottom: 2px solid #F5F5F5;
+	}
+}
+.sign__title h2 {
+	font-size: 25px;
+}
+.sign__title p {
+	padding-top: 35px;
+	padding-bottom: 15px;
+	line-height: 1.7;
+}
+//doneページ
+.done {
+  width: 880px;
+  margin: 0 auto;
+  margin-top: 50px;
+  &__title {
+    font-size: 25px;
+    letter-spacing: 5px;
+    text-align: center;
+    padding-bottom: 50px;
+    border-bottom: 2px solid #F5F5F5;
+  }
+}
+.done-main{
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+  &__title{
+    font-size: 18px;
+    letter-spacing: 2px;
+    line-height: 1.6;
+    text-align: center;
+  }
+}
+.done-main__title p {
+  margin-bottom: 35px;
+}
+.sub-title {
+  font-size:15px;
+}
+.done_link {
+  text-align: center;
+  width: 300px;
+  height: 50px;
+  margin-left: 12%;
+  background-color: rgba(30,144,255,1);
+  padding-top: 18px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+.done_link a {
+  color: white;
+}
+
+
+
+
+
+
