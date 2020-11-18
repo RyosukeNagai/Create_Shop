@@ -6,8 +6,7 @@
     .done-main__title
       %p
         %b
-          = "#{@user.first_name} #{@user.last_name}"
-          様
+          #{current_user.last_name} #{current_user.first_name}様
           %br/
           会員登録ありがとうございます。
       %p.sub-title

@@ -57,6 +57,34 @@
 	  padding-left: 30px;
 	}
 }
+
+ul ul{
+	display:none;
+	position:absolute;
+	width:130px;
+	text-align: center;
+	border: 1px solid gray;
+	margin-top: 8px;
+	box-shadow: 0px 3px 10px 2px rgba(0,0,0,0.2);
+}
+
+ul ul li {
+	width: 130px;
+	height: 25px;
+	font-size: 15px;
+}
+ul ul li a {
+	color: black;
+}
+.sub-nav {
+	width: 120px;
+}
+.nav-login__titles {
+	color: white;
+	font-size: 14px;
+	padding: 15px 0px;
+	padding-left: 10px;
+}
 .nav-cart {
 	width: 50px;
 	background-color: black;

@@ -1,18 +1,24 @@
 .header
-  .nav
-    .ul.global-nav
+  .nav.global-nav
+    %ul#navi
       %li.nav-seach
         = link_to root_path, method: :get do
           %i.fas.fa-search
       .nav-list
         %li
           = link_to ' HOME', root_path, class: 'nav-list-home'
-          = link_to ' ABOUT', "#", class: 'nav-list-about'
+          = link_to ' ABOUT', top_about_path, class: 'nav-list-about'
           = link_to ' CATEGORY', "#", class: 'nav-list-category'
       %li.nav-login
         = link_to new_user_registration_path, method: :get do
-          %p.nav-login__title 
-            #{current_user.first_name}様
+          %p.nav-login__titles 
+            #{current_user.last_name} #{current_user.first_name} 様
+        %ul
+          %li
+            = link_to ' マイページ', user_path(current_user), class: ''
+          %li
+            = link_to ' ログアウト', destroy_user_session_path, class: ''
       %li.nav-cart
         = link_to new_user_registration_path, method: :get do
           %i.fas.fa-shopping-cart
+

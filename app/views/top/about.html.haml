@@ -1,0 +1,29 @@
+.main-section
+  .header
+    -if user_signed_in?
+      =render "template/header_login"
+    -else
+      =render "template/header_unlogin"
+.about
+  .about__title
+    %h2 
+      %b ABOUT
+  .about__photo
+    .photo
+    %p.photo-name
+      %b
+        Niyan
+    %p.nickname
+      Ryo_Nagai
+  .about__float_clear
+  %p.about__introduction
+    iPad Proで制作したデザインやイラストを販売しています。
+  %p
+    ・完成JPEGデータ
+    %br/
+    ・制作アプリのオリジナルデータ
+  %p.about__introduction
+    をパッケージしているので、制作プロセスを確認できたり、オリジナルデータを修正してお好みのデザインに変更できます。
+  %p
+    ▼YouTube [ Ryo_Nagai ]
+= render "template/footer"
