@@ -1,3 +1,31 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//showページ
+.user__show {
+	width: 900px;
+	margin: 0 auto;
+}
+.show__content {
+	 width: 900px;
+	 height: 100px;
+	 margin: 0 auto;
+	 border-bottom: 1px solid #DCDCDC;
+}
+.show__titles {
+    padding-top: 25px;
+	font-size: 25px;
+}
+.show__title {
+    padding-top: 35px;
+	font-size: 15px;
+}
+.show__title__sub {
+	float: right;
+	color: gray;
+}
+.show__title__subs {
+	background-color: #DCDCDC;
+	float: right;
+	padding: 10px 10px 10px 10px;
+}

@@ -16,10 +16,7 @@
 //= require_tree .
 
 $(function(){
-	$('h2').hover(function(){
-		$(this).css('color', 'red');
-	},function(){
-		$(this).css('color', 'black');
-	});
+  $("#navi").children("li").hover(function(){
+    $(this).children("ul").stop().slideToggle(100);
+  });
 });
-

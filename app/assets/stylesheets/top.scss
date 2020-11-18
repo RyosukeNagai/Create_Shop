@@ -1,0 +1,72 @@
+// Place all the styles related to the Top controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.about {
+  width: 880px;
+  margin: 0 auto;
+  margin-top: 50px;
+  &__title {
+    text-align: left;
+    font-size: 25px;
+    letter-spacing: 5px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid #F5F5F5;
+  }
+}
+.about__photo {
+  width: 250px;
+  height: 100px;
+  margin-top: 50px;
+  background-color: red;
+}
+.photo {
+  background-image: image-url("jisso.jpg");
+  background-size: cover;
+  background-position: top center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-left: 10px;
+  float: left;
+}
+.photo-name {
+  padding-left: 45%;
+  padding-top: 10px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  background-color: blue;
+}
+.nickname {
+  padding-left: 45%;
+  padding-top: 5px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: gray;
+  background-color: yellow;
+}
+.about__float_clear {
+  clear: both;
+}
+.about__introduction {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
