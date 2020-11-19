@@ -1,0 +1,24 @@
+.admin__header
+  .nav
+    .ul.global-nav
+      %li.admin__nav-seach
+        = link_to  method: :get do
+          %i.fas.fa-search
+      %li.nav-title
+        = link_to admin_top_path, method: :get do
+          %b Admin_page
+      %li.admin-nav-login
+        = link_to admin_products_path, method: :get do
+          %p.admin-nav-login__title 商品一覧
+      %li.admin-nav-login
+        = link_to admin_users_path, method: :get do
+          %p.admin-nav-login__title 会員一覧
+      %li.admin-nav-login
+        = link_to admin_orders_path, method: :get do
+          %p.admin-nav-login__title 注文履歴
+      %li.admin-nav-login
+        = link_to admin_categories_path, method: :get do
+          %p.admin-nav-login__title CATEGORY
+      %li.admin-nav-login
+        = link_to destroy_admin_session_path, method: :delete do
+          %p.admin-nav-login__title LOG_OUT

@@ -9,6 +9,8 @@
           = link_to ' HOME', root_path, class: 'nav-list-home'
           = link_to ' ABOUT', top_about_path, class: 'nav-list-about'
           = link_to ' CATEGORY', "#", class: 'nav-list-category'
+          = link_to root_path, method: :get do
+            %span.shop-name Create_Shop
       %li.nav-login
         = link_to new_user_registration_path, method: :get do
           %p.nav-login__title LOGIN

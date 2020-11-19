@@ -9,6 +9,8 @@
           = link_to ' HOME', root_path, class: 'nav-list-home'
           = link_to ' ABOUT', top_about_path, class: 'nav-list-about'
           = link_to ' CATEGORY', "#", class: 'nav-list-category'
+          = link_to root_path, method: :get do
+            %span.shop-names Create_Shop!
       %li.nav-login
         = link_to new_user_registration_path, method: :get do
           %p.nav-login__titles 
@@ -17,8 +19,9 @@
           %li
             = link_to ' マイページ', user_path(current_user), class: ''
           %li
-            = link_to ' ログアウト', destroy_user_session_path, class: ''
+            = link_to ' アカウント設定', destroy_user_session_path, class: ''
       %li.nav-cart
         = link_to new_user_registration_path, method: :get do
           %i.fas.fa-shopping-cart
+
 
