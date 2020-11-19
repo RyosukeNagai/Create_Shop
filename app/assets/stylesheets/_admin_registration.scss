@@ -1,0 +1,99 @@
+/* login */
+.admin__login {
+	width: 100%;
+	height: 1000px;
+	background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+	padding-top: 200px;
+	&__view {
+	  width: 450px;
+	  margin: 0 auto;
+	  background-color: #fff;
+	}
+}
+.admin__login__title {
+	text-align: center;
+	padding-top: 30px;
+}
+.admin__login__title h2 {
+	font-size: 30px;
+	margin-bottom: 10px;
+}
+.admin__login__title p {
+	font-size: 16px;
+}
+.admin__form-group{
+  margin-bottom: 0px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: left;
+  /* 必須 */ 
+  &__require{
+    background: #F0F8FF;
+    margin: 0 0 0 8px;
+    padding: 2px 10px;
+    border-radius: 2px;
+    color: rgba(30,144,255,1);
+    font-size: 12px;
+    display: inline-block;
+    font-weight: bold;
+  }
+  /* 入力フォーム */
+  &__input{
+    width: 40%;
+    margin-left: 5%;
+    height: 40px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    border-top: 1px solid gray;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+}
+.action {
+	width: 350px;
+	padding-bottom: 30px;
+	margin-left: 5%;
+}
+.btn-success {
+	color: #fff;
+    background-color: rgba(0,128,128,1);
+    border-color: #357ebd;
+    height: 50px;
+    font-size: 15px;
+}
+//header
+
+.admin__header {
+  width: 850px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.nav-title {
+  padding: 20px;
+  font-size: 20px;
+}
+.admin__nav-seach {
+  width: 50px;
+  background-color: black;
+  border-radius: 5px;
+  height: 50px;
+}
+.admin-nav-login {
+  width: 100px;
+  background-color: black;
+  border-radius: 5px;
+  height: 50px;
+  margin-left: 20px;
+  &__title {
+    color: white;
+    font-size: 14px;
+    padding: 15px 0px;
+    text-align: center;
+  }
+}
+.nav-title b {
+  font-family: 'Pangolin', cursive;
+}

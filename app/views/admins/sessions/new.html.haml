@@ -1,0 +1,15 @@
+.admin__login
+  .admin__login__view
+    .admin__login__title
+      %h2 
+        %b @_admin
+      %p ログイン
+    .login-main
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .admin__form-group
+          = f.email_field :email, {autofocus: true, autocomplete: "email", placeholder: "メールアドレス",class: 'admin__form-group__input'}
+
+        .admin__form-group
+          = f.password_field :password,{autocomplete: "new-password",placeholder: "パスワード",class:'admin__form-group__input',id:"password"}
+        .action
+          = f.submit "ログイン", class: "btn btn-success btn-lg btn-block"
