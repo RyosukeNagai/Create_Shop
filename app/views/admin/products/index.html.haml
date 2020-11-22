@@ -1,1 +1,27 @@
-%p 管理側　products/index
+=render "template/header_admin"
+
+.top-index
+  .container
+    .row
+      .col-lg-8.offset-lg-2
+        %h3.page-title
+          商品一覧
+        %table.table.table-hover
+          %thead.thead-light
+            %tr
+              %th 商品ID
+              %th 商品名
+              %th 税抜価格
+              %th カテゴリー
+              %th ステータス
+          - @products.each do |product|
+            %tr
+              %td= product.id
+              %td= link_to product.name,admin_product_path(product)
+              %td
+                = product.price
+                円
+              %td= product.category.name
+              %td= product.is_active
+  = link_to new_admin_product_path,class: "pull-right" do
+    %i.fas.fa-plus-circle

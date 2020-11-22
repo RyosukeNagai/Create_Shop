@@ -3,4 +3,7 @@
   %p.order-count
     本日の注文件数
     %span
-      件
+      = link_to admin_orders_path, class: "btn-link" do
+        = @orders.count
+        件
+
