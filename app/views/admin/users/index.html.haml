@@ -1,1 +1,21 @@
-%p 管理側　users/index
+=render "template/header_admin"
+.top-index
+  .container
+    .row
+      .col-lg-8.offset-lg-2
+        %h3.page-title
+          会員様一覧
+        %table.table.table-hover
+          %thead.thead-light
+            %tr
+              %th 会員ID
+              %th 氏名
+              %th メールアドレス
+              %th ステータス
+          - @users.each do |user|
+            %tr
+              %td= user.id
+              %td= link_to user.last_name + user.first_name
+              %td= user.email
+              %td= user.is_active
+              

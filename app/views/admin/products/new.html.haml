@@ -1,0 +1,63 @@
+=render "template/header_admin"
+.top-index
+  .container
+    %h3.page-title
+      商品新規登録
+    = form_for(@product, url:admin_products_path) do |f|
+      - if @product.errors.any?
+        %h3
+          = @product.errors.count
+          eroor
+        %ul
+          - @product.errors.full_messages.each do |message|
+            %li= message
+      .row
+        .col-lg-3
+          %b 画像のプレビュー
+          = f.file_field :image, class: 'img_field', style: 'display:none;'
+          = attachment_image_tag @product, :image, fallback: 'no_image.jpg', onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev'
+        .col-lg-7.offset-lg-1
+          .row
+            .col-lg-2
+              %b 商品名　　
+            .col-lg-10
+              = f.text_field :name, {autocomplete: "off", class: "product-form"}
+              円
+          .row
+            .col-lg-2
+              %b 商品説明　
+            .col-lg-10
+              = f.text_area :introduction, autocomplete: "off",rows:"8", style:"width:300px"
+          .row
+            .col-lg-2
+              %b ジャンル　
+            .col-lg-10
+          .row
+            .col-lg-2
+              %b 税込価格　
+            .col-lg-10
+              = f.text_field :price, {autocomplete: "off" , class: "product-form"}
+              円
+          .row
+            .col-lg-2
+              %b
+                販売
+                %br>/
+                ステータス
+            .col-lg-10
+              = f.select :is_active, Product.is_actives.keys, |
+              include_blank: "-- 選択してください --"               |
+          .row
+            .col-lg-4
+            .col-lg-7
+              = f.submit "新規登録", class:"btn btn-primary", style:"padding: 10px 30px;"
+
+
+
+
+
+
+
+
+
+
