@@ -2,8 +2,8 @@
 .top-index
   .container
     %h3.page-title
-      商品新規登録
-    = form_for(@product, url:admin_products_path) do |f|
+      商品編集
+    = form_for(@product, url:edit_admin_product_path) do |f|
       - if @product.errors.any?
         %h3
           = @product.errors.count
@@ -49,7 +49,7 @@
               = f.select :is_active, Product.is_actives.keys, include_blank: "-- 選択してください --"
           .row
             .col-lg-10.offset-lg-1
-              = f.submit "新規登録", class:"btn btn-primary", style:"padding: 10px 30px;"
+              = f.submit "変更を保存", class:"btn btn-primary", style:"padding: 10px 30px;"
 
 
 

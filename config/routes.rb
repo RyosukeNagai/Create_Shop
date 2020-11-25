@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     get 'top'=>'orders#top'
-    resources :products,only: [:index, :new, :create]
-    resources :users,only: [:index]
+    resources :products,only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :users,only: [:index, :show, :edit, :update]
     resources :orders,only: [:index]
-    resources :categories,only: [:index]
+    resources :categories,only: [:index, :new, :create, :edit, :update, :destroy]
   end
   devise_scope :user do
     get 'users/sign_up/done', to: 'users/registrations#done'
