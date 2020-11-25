@@ -1,0 +1,23 @@
+=render "template/header_admin"
+.top-index
+  .container
+    .row
+      .col-lg-1
+      .col-lg-7
+        %h3.category-wrap
+          %b
+            カテゴリー 編集
+  .row
+    .col-lg-3
+    .col-lg-7
+      = form_with(model: @category, url: admin_category_path, |
+          method: :patch, local: true) do |f|               |
+        = f.label :カテゴリー
+        = f.text_field :name
+        %label
+          = f.radio_button :is_active,  "有効"
+          有効
+        %label
+          = f.radio_button :is_active,  "無効"
+          無効
+        = f.submit '変更する' ,class: "btn btn-primary"

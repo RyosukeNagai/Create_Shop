@@ -1,0 +1,54 @@
+=render "template/header_admin"
+.top-index
+  .container
+    .row
+      .col-lg-1
+      .col-lg-7
+        %h3.user-edit--profile-name
+          %b
+            = @user.last_name + @user.first_name
+          %p.user-profile-title
+            さんの会員情報編集
+  .row
+    .col-lg-2
+    .col-lg-7
+      = form_with(model: @user, url: admin_user_path(@user), |
+        method: :patch, local: true) do|f|                               |
+        %table.table.table-borderless
+          %tr
+            %td 顧客ID
+            %td
+              = @user.id
+              = @user.is_active
+          %tr
+            %td 氏名
+            %td= @user.last_name + @user.first_name
+          %tr
+            %td メールアドレス
+            %td= @user.email
+          %tr
+            %td 郵便番号
+            %td= @user.postcode
+          %tr
+            %td 都道府県
+            %td= @user.prefecture_code
+          %tr
+            %td 市区町村
+            %td= @user.address_city
+          %tr
+            %td 番地
+            %td= @user.address_street
+          %tr
+            %td ビル
+            %td= @user.address_building
+          %tr
+            %td 電話番号
+            %td= @user.phone_number
+          %tr
+            %td 会員ステータス
+            %td
+              = f.radio_button :is_active, :effectiveness
+              = f.label :is_active,"有効", {value: :effectiveness, style: "dispaly: inline-block;"}
+              = f.radio_button :is_active, :Withdrawn
+              = f.label :is_active, "退会済み", {value: :Withdrawn, style: "display: inline-block;"}
+        = f.submit '変更を保存する', class: "btn btn-primary"

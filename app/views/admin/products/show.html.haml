@@ -1,0 +1,37 @@
+=render "template/header_admin"
+.top-index
+  .container
+    %h3.page-title
+      商品詳細
+    .row
+      .col-lg-12
+        = attachment_image_tag @product, :image, fallback: "no_image.jpg", |
+        class:"product-image-admin"                                              |
+    .row
+      .col-lg-3
+        %span 商品名
+      .col-lg-9
+        = @product.name
+    .row
+      .col-lg-3
+        %p &#x5546;&#x54C1;&#x8AAC;&#x660E;&#x3000;
+      .col-lg-9
+        = @product.introduction
+    .row
+      .col-lg-3
+        %p &#x30B8;&#x30E3;&#x30F3;&#x30EB;&#x3000;
+      .col-lg-9
+        = @product.category.name
+    .row
+      .col-lg-3
+        %p &#x7A0E;&#x8FBC;&#x4FA1;&#x683C;(&#x7A0E;&#x629C;&#x4FA1;&#x683C;)
+      .col-lg-9
+        = (@product.price * 1.1).to_i
+        (#{@product.price})&#x5186;
+    .row
+      .col-lg-3
+        %p &#x8CA9;&#x58F2;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;
+      .col-lg-9
+        = @product.is_active
+  .action-botton
+    = link_to "編集する",edit_admin_product_path(@product), class: "btn btn-primary bottom"

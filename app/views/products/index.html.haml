@@ -4,4 +4,33 @@
       =render "template/header_login"
     -else
       =render "template/header_unlogin"
+
+.container
+  .row
+    .col-lg-12
+      %h3.top-product-title
+        = @index_title
+        一覧
+        %span{:style => "font-size: 15px"}
+          / 2個目のeach文で表示される予定のデータ数をカウントして表示
+          - @sum = 0
+          - @products.each do |product|
+            - if product.category.is_active == "有効"
+              - @sum += 1
+          (全#{@sum.to_i}件)
+      .products
+        - @sum = 0
+        - @products.each do |product|
+          - if product.category.is_active == "有効"
+            .product-content
+              / 4つごとに折り返し
+              .product-block
+                = link_to product_path(product) do
+                  = attachment_image_tag product, :image, format:"jpg", |
+                    fallback:"no_image.jpg", class:"product-image"              |
+                %p= product.name
+                %p
+                  ￥#{product.price}円
+                - @sum += 1
+
 = render "template/footer"
