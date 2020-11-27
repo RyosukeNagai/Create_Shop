@@ -3,7 +3,8 @@
   .container
     %h3.page-title
       商品編集
-    = form_for(@product, url:edit_admin_product_path) do |f|
+    = form_with(url: admin_product_path, model: @product, method: :patch, local: true) do |f|
+
       - if @product.errors.any?
         %h3
           = @product.errors.count
@@ -26,7 +27,7 @@
             .col-lg-3
               %b 商品説明　
             .col-lg-9
-              = f.text_area :introduction, autocomplete: "off",rows:"8", style:"width:300px"
+              = f.text_area :introduction, autocomplete: "off",rows:"8", style:"width:300px",class: "product-introduction-form"
           .row
             .col-lg-3
               %b カテゴリー　

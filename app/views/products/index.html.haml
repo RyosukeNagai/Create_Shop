@@ -26,11 +26,13 @@
               / 4つごとに折り返し
               .product-block
                 = link_to product_path(product) do
-                  = attachment_image_tag product, :image, format:"jpg", |
-                    fallback:"no_image.jpg", class:"product-image"              |
+                  = attachment_image_tag product, :image, format:"jpg",fallback:"no_image.jpg", class:"product-images"
                 %p= product.name
                 %p
-                  ￥#{product.price}円
-                - @sum += 1
+                  ￥#{product.price.to_s(:delimited)}円
+                  - @sum += 1
+        .ranking__menu
+          %p.ranking__menu__title
+            RANKING
 
 = render "template/footer"

@@ -19,10 +19,11 @@
               %td= product.id
               %td= link_to product.name,admin_product_path(product)
               %td
-                = product.price
+                = product.price.to_s(:delimited)
                 円
               %td= product.category.name
               %td= product.is_active
+              %td= link_to "Destroy", admin_product_path(product), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book"
   = link_to new_admin_product_path,class: "pull-right" do
     %i.fas.fa-plus-circle
 
