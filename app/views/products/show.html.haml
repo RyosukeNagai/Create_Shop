@@ -1,0 +1,23 @@
+.main-section
+  .header
+    -if user_signed_in?
+      =render "template/header_login"
+    -else
+      =render "template/header_unlogin"
+.product-image-page
+  .container
+    .row
+      .col-lg-4
+        = attachment_image_tag @product, :image, fallback: "no_image.jpg",class: "product-images"
+
+      .col-lg-8
+        = @product.name
+
+      .col-lg-8
+        %p
+          ￥#{@product.price.to_s(:delimited)} 税込
+
+      .col-lg-8
+        = @product.introduction
+
+      
