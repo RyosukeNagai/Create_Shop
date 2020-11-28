@@ -20,5 +20,5 @@
           %li
             = link_to ' SIGN_IN', new_user_registration_path, class: ''
       %li.nav-cart
-        = link_to new_user_registration_path, method: :get do
+        = link_to cart_items_confirm_path, method: :get do
           %i.fas.fa-shopping-cart

@@ -29,7 +29,7 @@
       .col-lg-2
         %b 税込価格(税抜価格)
       .col-lg-8
-        = (@product.price * 1.1).to_i
+        = @tax_price.to_s(:delimited)
         (#{@product.price})&#x5186;
     .row
       .col-lg-1

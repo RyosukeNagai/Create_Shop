@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
-  has_many :users
+  has_many :users, through: :cart_items, source: :users
+  has_many :cart_items, dependent: :destroy
   belongs_to :category
   attachment :image
 
