@@ -7,17 +7,26 @@
 .product-image-page
   .container
     .row
-      .col-lg-4
-        = attachment_image_tag @product, :image, fallback: "no_image.jpg",class: "product-images"
+      .col-lg-5
+        = attachment_image_tag @product, :image, fallback: "no_image.jpg",class: "product-show-image"
 
-      .col-lg-8
+      .col-lg-7.product__title
         = @product.name
 
-      .col-lg-8
-        %p
-          ￥#{@product.price.to_s(:delimited)} 税込
+      .col-lg-7
+        %p.product__title__price
+          ¥
+          = @tax_price.to_s(:delimited)
+          %span.product-price
+            税込
 
-      .col-lg-8
+      .col-lg-7
+        = link_to "カートに入れる",root_path, class: "btn btn-primary bottom"
+
+      .col-lg-7
+        = link_to "♡ お気に入りに追加",root_path, class: "btn btn-default "
+
+      .col-lg-7.product__title__price__introduction
         = @product.introduction
 
       

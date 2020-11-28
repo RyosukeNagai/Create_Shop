@@ -1,0 +1,6 @@
+.main-section
+  .header
+    -if user_signed_in?
+      =render "template/header_login"
+    -else
+      =render "template/header_unlogin"
