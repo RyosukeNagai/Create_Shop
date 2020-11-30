@@ -21,7 +21,11 @@
             税込
 
       .col-lg-7
-        = link_to "カートに入れる",root_path, class: "btn btn-primary bottom"
+        = form_for(@cart_item , url: user_cart_items_path, method: :post) do |f|
+          .field
+            - if user_signed_in?
+              = f.hidden_field :product_id, value: @product.id
+              = f.submit "カートに入れる", class: "btn btn-primary bottom"
 
       .col-lg-7
         = link_to "♡ お気に入りに追加",root_path, class: "btn btn-default "
@@ -29,4 +33,3 @@
       .col-lg-7.product__title__price__introduction
         = @product.introduction
 
-      

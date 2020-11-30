@@ -17,7 +17,7 @@
             #{current_user.last_name} #{current_user.first_name} 様
         %ul
           %li
-            = link_to ' マイページ', user_path(current_user), class: ''
+            = link_to ' マイページ', users_path, class: ''
           %li
             = link_to ' アカウント設定', destroy_user_session_path, class: ''
       %li.nav-cart

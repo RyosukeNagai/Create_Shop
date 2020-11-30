@@ -1,0 +1,51 @@
+.main-section
+  .header
+    -if user_signed_in?
+      =render "template/header_login"
+    -else
+      =render "template/header_unlogin"
+
+.user__show
+  - breadcrumb :index
+  = breadcrumbs pretext: "",separator: " &rsaquo; "
+
+  .show__content
+    .show__titles
+      %b マイページ
+    .show__title__subs
+      = link_to destroy_user_session_path, method: :delete do
+        %b ログアウト
+  .show__content
+    .show__title
+      = link_to user_path(@user), method: :get do
+        %b アカウント情報設定
+    .show__title__sub
+      %p お客様情報の確認・変更ができます　＞
+  .show__content
+    .show__title
+      = link_to shippings_path, method: :get do
+        %b 配送先設定
+    .show__title__sub
+      %p 配送先情報の登録・変更ができます　＞
+  .show__content
+    .show__title
+      %b 購入履歴
+    .show__title__sub
+      %p 過去の購入履歴が確認できます　＞
+  .show__content
+    .show__title
+      %b お気に入り
+    .show__title__sub
+      %p お気に入り登録したアイテムが一覧で確認できます　＞
+  .show__content
+    .show__title
+      %b クレジット設定
+    .show__title__sub
+      %p クレジット情報の登録・変更ができます　＞
+  .show__content
+    .show__title
+      = link_to users_delete_path, method: :get do
+        %b 退会する
+    .show__title__sub
+      %p 
+= render "template/footer"

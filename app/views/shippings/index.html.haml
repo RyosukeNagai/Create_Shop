@@ -1,0 +1,32 @@
+.main-section
+  .header
+    -if user_signed_in?
+      =render "template/header_login"
+    -else
+      =render "template/header_unlogin"
+.user__show
+  - breadcrumb :shipping
+  = breadcrumbs pretext: "",separator: " &rsaquo; "
+.container
+  .row{:style => "margin-bottom: 20px"}
+    .col-lg-12
+      = render 'shippings/newform',shipping:@shipping
+  .row
+    %table.table.table-bordered
+      %thead.thead-light
+        %tr
+          %th 郵便番号
+          %th 都道府県
+          %th 市区町村
+          %th 番地
+          %th ビル
+          %th 宛名
+      %tbody
+        - @shippings.each do |shipping|
+          %tr
+            %td.align-middle= shipping.postcode
+            %td.align-middle= shipping.prefecture_code
+            %td.align-middle= shipping.address_city
+            %td.align-middle= shipping.address_street
+            %td.align-middle= shipping.address_building
+            %td.align-middle= shipping.name
