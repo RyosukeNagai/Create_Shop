@@ -26,7 +26,7 @@
         = f.text_field :postcode, {placeholder: "例) 1500011",class: 'form-group__input--half',id: "user_postcode"}
       .form-group
         = f.label :都道府県　　　　　
-        = f.text_field :prefecture_code,class: 'form-group__input--half',id: 'user_prefecture_code', collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県'
+        = f.text_field :prefecture_code, {placeholder: "兵庫県",class:'form-group__input',id: "user_prefecture_code"}
       .form-group
         = f.label :市区町村　　　　　
         = f.text_field :address_city, {placeholder: "神戸市",class:'form-group__input',id: "user_address_city"}

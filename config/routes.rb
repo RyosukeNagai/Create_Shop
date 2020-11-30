@@ -19,14 +19,21 @@ Rails.application.routes.draw do
   end
   devise_scope :user do
     get 'users/sign_up/done', to: 'users/registrations#done'
+    post 'user/cart_items' => "user/cart_items#create"
+    delete 'user/cart_item/:id' => "user/cart_items#destroy", as: "cart_item"
+    patch 'user/cart_item/:id' => "user/cart_items#update"
+    put 'user/cart_item/:id' => "user/cart_items#update"
     get 'cart_items/confirm' => "user/cart_items#confirm"
-  delete 'cart_items/destroy_all' => "user/cart_items#destroy_all", as: "cart_items_destroy_all"
-    resources :cart_items, only: [:update, :create, :destroy]
+    delete 'cart_items/destroy_all' => "user/cart_items#destroy_all", as: "cart_items_destroy_all"
+    get 'new/user/order' => "user/orders#new"
+    post 'user/orders/confirm' => "user/orders#confirm"
     resources :products, only: [:show]
-
+    resources :orders,only: [:index, :show, :create, :update]
+    resources :shippings
   end
   root "products#index"
   get 'top/about' => 'top#about'
-  resources :users, only: [:show]
+  get "users/delete" => "users#delete", as: "users_delete"
+  resources :users, only: [:show, :index, :edit, :update, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

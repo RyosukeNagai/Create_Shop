@@ -2,10 +2,35 @@ crumb :root do
   link "HOME", root_path
 end
 
-crumb :show do
-  link "マイページ", user_path(current_user)
+crumb :about do
+  link "ABOUT", top_about_path
+  parent :root
 end
 
+crumb :index do
+  link "マイページ", users_path
+  parent :root
+end
+
+crumb :show do
+  link "アカウント情報", user_path(current_user)
+  parent :index
+end
+
+crumb :edit do
+  link "アカウント情報編集", user_path(current_user)
+  parent :show
+end
+
+crumb :delete do
+  link "退会", user_path(current_user)
+  parent :index
+end
+
+crumb :shipping do
+  link "配送先一覧・登録", shippings_path
+  parent :index
+end
 
 # crumb :projects do
 #   link "Projects", projects_path

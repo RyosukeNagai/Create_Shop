@@ -1,0 +1,72 @@
+.main-section
+  .header
+    -if user_signed_in?
+      =render "template/header_login"
+    -else
+      =render "template/header_unlogin"
+  .row
+    .col-lg-8.col-lg-offset-2
+      %b.top-product-title
+        注文情報入力
+.container
+  %h3{:style => "margin-bottom: 20px;"}
+    %span.head-text 注文情報確認
+  .row
+    .col-lg-8
+      %table.table.table-bordered
+        %thead.thead-light
+          %tr
+            %th 商品名
+            %th 単価(税込)
+            %th 数量
+            %th 小計
+        - @sum = 0
+        - @order_products.each do |order_product|
+          %tr
+            %td
+              = attachment_image_tag order_product.product, :image, |
+                format: 'jpg', size: "80x50", fallback:"no_image.jpg"       |
+              = order_product.product.name
+            %td.align-middle= (order_product.product.price * 1.1).to_i
+            %td.align-middle= order_product.count
+            %td.align-middle
+              = (order_product.product.price * 1.1).to_i * order_product.count.to_i
+              - @sum += order_product.product.price*1.1*order_product.count.to_i
+    .col-lg-4
+      %table.table.table-bordered
+        %tr{:style => "height: 50px;"}
+          %td.table-active.align-middle 送料
+          %td.align-middle 800
+        %tr{:style => "height: 75px;"}
+          %td.table-active.align-middle 商品合計
+          %td.align-middle= @sum.to_i
+        %tr{:style => "height: 75px;"}
+          %td.table-active.align-middle 請求金額
+          %td.align-middle= (@sum + 800).to_i
+  .row
+    .col-lg-12
+      %div
+        %span
+        支払い方法 :
+        = @order.payment_method
+      %div{:style => "margin-bottom: 20px"}
+        %span{:style => "font-weight: bold;font-size: 18px;"} お届け先	  ：
+        = @order.postcode
+        = @order.prefecture_code
+        = @order.address_city
+        = @order.address_street
+        = @order.address_building
+        %br/
+        %span{:style => "margin-left: 100px;"}= @order.name
+      = form_with(url:orders_path,  local: true) do |f|
+        = f.hidden_field :name, value: @order.name
+        = f.hidden_field :postage, value: @order.postage
+        = f.hidden_field :order_status, value: "入金待ち"
+        = f.hidden_field :prefecture_code, value: @order.prefecture_code
+        = f.hidden_field :postcode, value: @order.postcode
+        = f.hidden_field :payment_method, value: @order.payment_method
+        = f.hidden_field :postage, value: 800
+        = f.hidden_field :total_products_cost, value: @sum
+        %div{:style => "text-align: center"}
+          = f.submit "購入を確定する" ,class:"btn btn-success"
+          

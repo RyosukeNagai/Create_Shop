@@ -4,29 +4,43 @@
       =render "template/header_login"
     -else
       =render "template/header_unlogin"
-
 .user__show
   - breadcrumb :show
   = breadcrumbs pretext: "",separator: " &rsaquo; "
-  .show__content
-    .show__titles
-      %b マイページ
-    .show__title__subs
-      = link_to destroy_user_session_path, method: :delete do
-        %b ログアウト
-  .show__content
-    .show__title
-      %b アカウント設定
-    .show__title__sub
-      %p 配送先やクレジットカード情報の登録・変更ができます　＞
-  .show__content
-    .show__title
-      %b 購入履歴
-    .show__title__sub
-      %p 過去の購入履歴が確認できます　＞
-  .show__content
-    .show__title
-      %b お気に入り
-    .show__title__sub
-      %p お気に入り登録したアイテムが一覧で確認できます　＞
-= render "template/footer"
+.about
+  .row
+
+    .col-lg-12
+      %div{:style => "margin-bottom: 20px;"}
+        %span{:style => "font-weight: bold; font-size: 20px;"} 登録情報
+    .col-lg-5
+      %table.table
+        %tr
+          %td.table-active 氏名
+          %td
+            = @user.last_name
+            = @user.first_name
+        %tr
+          %td.table-active 郵便番号
+          %td= @user.postcode
+        %tr
+          %td.table-active 都道府県
+          %td= @user.prefecture_code
+        %tr
+          %td.table-active 市区町村
+          %td= @user.address_city
+        %tr
+          %td.table-active 番地
+          %td= @user.address_street
+        %tr
+          %td.table-active ビル
+          %td= @user.address_building
+        %tr
+          %td.table-active 電話番号
+          %td= @user.phone_number
+        %tr
+          %td.table-active メールアドレス
+          %td= @user.email
+        = link_to "編集する", edit_user_path(@user), data: {"turbolinks" => false}, |
+          class:"btn btn-warning", style:"margin-bottom: 10px;"                             |
+

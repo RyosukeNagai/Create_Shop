@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_162039) do
+ActiveRecord::Schema.define(version: 2020_11_29_152945) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_11_28_162039) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "user_id"
     t.integer "product_id"
-    t.integer "count"
+    t.integer "count", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,8 +41,11 @@ ActiveRecord::Schema.define(version: 2020_11_28_162039) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
-    t.string "address"
-    t.string "postal_code"
+    t.integer "postcode"
+    t.string "prefecture_code"
+    t.string "address_city"
+    t.string "address_street"
+    t.string "address_building"
     t.string "name"
     t.integer "postage"
     t.integer "total_price"
@@ -64,13 +67,25 @@ ActiveRecord::Schema.define(version: 2020_11_28_162039) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "shippings", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.integer "postcode"
+    t.string "prefecture_code"
+    t.string "address_city"
+    t.string "address_street"
+    t.string "address_building"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.integer "postcode", null: false
-    t.integer "prefecture_code", null: false
+    t.string "prefecture_code", null: false
     t.string "address_city", null: false
     t.string "address_street", null: false
     t.string "address_building", null: false

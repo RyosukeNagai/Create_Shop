@@ -1,0 +1,49 @@
+.main-section
+  .header
+    -if user_signed_in?
+      =render "template/header_login"
+    -else
+      =render "template/header_unlogin"
+.user__show
+  - breadcrumb :edit
+  = breadcrumbs pretext: "",separator: " &rsaquo; "
+
+.user__edit
+  .user__edit__title
+    %h2 
+      %b アカウント情報編集
+  .login-main
+    = form_for(@user, url: user_path) do|f|
+      .form-group
+        = f.label :"お名前　　　　　　"
+        = f.text_field :last_name, {placeholder:"例) 八村",class:'form-group__input--half'}
+        = f.text_field :first_name, {placeholder:"例) 塁",class: 'form-group__input--half'}
+      .form-group
+        = f.label :メールアドレス　
+        %i.fas.fa-envelope
+        = f.email_field :email, {autofocus: true, autocomplete: "email", placeholder: "sample@stores.jp",class: 'form-group__input'}
+      .form-group
+        = f.label :郵便番号　　　　
+        %i.fab.fa-mailchimp
+        = f.text_field :postcode,class: 'form-group__input--half'
+      .form-group
+        = f.label :都道府県　　　　　
+        = f.text_field :prefecture_code,class: 'form-group__input'
+      .form-group
+        = f.label :市区町村　　　　　
+        = f.text_field :address_city, {placeholder: "神戸市",class: 'form-group__input',id: "user_address_city"}
+      .form-group
+        = f.label :番地　　　　　　　
+        = f.text_field :address_street, {placeholder: "4-5-6",class: 'form-group__input',id: "user_address_street"}
+      .form-group
+        = f.label :ビル　　　　　　
+        %i.fas.fa-building
+        = f.text_field :address_building, {placeholder: "新山麓荘",class: 'form-group__input'}
+      .form-group
+        = f.label :電話番号　　　　
+        %i.fas.fa-phone-alt
+        = f.text_field :phone_number, {placeholder: "例) 09012345678",class: 'form-group__input--half'}
+
+      .actions
+        = f.submit "変更内容を保存する", class: "btn btn-primary btn-lg btn-block"
+        

@@ -1,0 +1,22 @@
+.main-section
+  .header
+    -if user_signed_in?
+      =render "template/header_login"
+    -else
+      =render "template/header_unlogin"
+.user__show
+  - breadcrumb :delete
+  = breadcrumbs pretext: "",separator: " &rsaquo; "
+.container
+  .row
+    .col-lg-12
+    %p
+      本当に退会しますか？
+    %p
+      退会すると、会員登録情報や
+      %br
+        これまでの購入履歴が閲覧できなくなります。
+        退会する場合は、「退会する」をクリックしてください。
+        %p
+          = link_to "退会しない", root_path, class: 'btn btn-warning destroy_book'
+          = link_to "Destroy", user_path(@user), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger"

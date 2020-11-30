@@ -1,0 +1,40 @@
+= form_for(shipping, url: shippings_path) do |f|
+  - if shipping.errors.any?
+    %h3
+      = shipping.errors.count
+      eroor
+    %ul
+      - shipping.errors.full_messages.each do |message|
+        %li= message
+  .row
+    .col-lg-4
+      %p 郵便番号(ハイフンなし)
+    .col-lg-3
+      = f.text_field :postcode, autocomplete: "off"
+  .row
+    .col-lg-4
+      %p 都道府県
+    .col-lg-5
+      = f.text_field :prefecture_code, autocomplete: "off" ,style:"width:100%"
+  .row
+    .col-lg-4
+      %p 市区町村
+    .col-lg-5
+      = f.text_field :address_city, autocomplete: "off" ,style:"width:100%"
+  .row
+    .col-lg-4
+      %p 番地
+    .col-lg-5
+      = f.text_field :address_street, autocomplete: "off" ,style:"width:100%"
+  .row
+    .col-lg-4
+      %p ビル
+    .col-lg-5
+      = f.text_field :address_building, autocomplete: "off" ,style:"width:100%"
+  .row
+    .col-lg-4
+      %p 宛名
+    .col-lg-8
+      = f.text_field :name, autocomplete: "off"
+      %span{:style => "float: right"}
+        = f.submit "登録する", class:"btn btn-success", style:"padding:5px 20px;"

@@ -4,6 +4,9 @@
       =render "template/header_login"
     -else
       =render "template/header_unlogin"
+.user__show
+  - breadcrumb :about
+  = breadcrumbs pretext: "",separator: " &rsaquo; " 
 .about
   .about__title
     %h2 

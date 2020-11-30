@@ -29,3 +29,17 @@
 	float: right;
 	padding: 10px 10px 10px 10px;
 }
+.user__edit {
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 50px;
+	&__title {
+		letter-spacing: 5px;
+		text-align: center;
+		padding-bottom: 20px;
+		border-bottom: 2px solid #F5F5F5;
+	}
+}
+.user__edit__title h2 {
+	font-size: 20px;
+}
