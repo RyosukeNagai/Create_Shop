@@ -29,7 +29,8 @@
       %p 配送先情報の登録・変更ができます　＞
   .show__content
     .show__title
-      %b 購入履歴
+      = link_to user_orders_path, method: :get do
+        %b 購入履歴
     .show__title__sub
       %p 過去の購入履歴が確認できます　＞
   .show__content

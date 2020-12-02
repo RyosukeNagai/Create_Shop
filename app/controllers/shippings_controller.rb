@@ -9,6 +9,12 @@ class ShippingsController < ApplicationController
 	end
 
 	def create
+	  @shipping = Shipping.new(shipping_params)
+	  @shipping.user_id = current_user.id
+	  if @shipping.save
+	  	 flash.now[:notice] = "新規配送先を登録しました"
+	     redirect_to shippings_path
+      end
 	end
 
 	def show
@@ -19,9 +25,16 @@ class ShippingsController < ApplicationController
 	end
 
 	def update
+	  @shipping = Shipping.find(params[:id])
+	  @shipping.user_id = current_user.id
+	  @shipping.update(shipping_params)
+	  redirect_to shippings_path
 	end
 
 	def destroy
+	  @shipping = Shipping.find(params[:id])
+      @shipping.destroy
+      redirect_to shippings_path
 	end
 
 	private

@@ -7,9 +7,10 @@
 .user__show
   - breadcrumb :shipping
   = breadcrumbs pretext: "",separator: " &rsaquo; "
-.container
-  .row{:style => "margin-bottom: 20px"}
-    .col-lg-12
+
+
+  .row{:style => "margin-top: 50px"}
+    .col-lg-8
       = render 'shippings/newform',shipping:@shipping
   .row
     %table.table.table-bordered
@@ -21,6 +22,8 @@
           %th 番地
           %th ビル
           %th 宛名
+          %th
+          %th
       %tbody
         - @shippings.each do |shipping|
           %tr
@@ -30,3 +33,5 @@
             %td.align-middle= shipping.address_street
             %td.align-middle= shipping.address_building
             %td.align-middle= shipping.name
+            %td= link_to "Edit",edit_shipping_path(shipping), class: "btn-sm btn-success"
+            %td= link_to "Destroy", shipping_path(shipping), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book"
