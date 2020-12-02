@@ -14,13 +14,13 @@
       %h3.order-page-title
         @支払方法
         .field.user-postcode
-          = form_with :model => @order,url:user_orders_confirm_path,method: :post, local: true do |form|
+          = form_with(url:user_orders_confirm_path, local: true) do |form|
             %label
-              = form.radio_button :payment_method, "クレジットカード"
+              = form.radio_button :payment_method,"クレジットカード"
               クレジットカード
             %br/
             %label
-              = form.radio_button :payment_method, "銀行振込"
+              = form.radio_button :payment_method,"銀行振込"
               銀行振込
 
             %h3.order-page-titles
@@ -39,14 +39,18 @@
                 = @user.address_building
 
                 %br/
-                = @user.last_name + @user.first_name
+                = "#{current_user.first_name} #{current_user.last_name}"
                 %br/
 
               .field
-                %label.user-postcode
-                  
+                %label
+                  = form.radio_button :addresses , "2"
+                  登録済住所から選択
                 %br/
-              
+                %div{:style => "margin-left: 20px"}
+                  = form.collection_select(:select_address, @user_address,:id, :view_shipping)
+
+
               .field
                 %label.user-postcode
                   = form.radio_button  :addresses ,"3"
@@ -55,17 +59,20 @@
                     = form.label :郵便番号　　　　
                     = form.text_field :postcode, {placeholder: "例) 1500011",class: 'order-form',id: "user_postcode"}
                   .form-group
-                    = form.label :都道府県　　　　　
+                    = form.label :都道府県　　　　
                     = form.text_field :prefecture_code,class: 'order-form',id: 'user_prefecture_code', collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県'
                   .form-group
-                    = form.label :市区町村　　　　　
+                    = form.label :市区町村　　　　
                     = form.text_field :address_city, {placeholder: "神戸市",class: 'order-form',id: "user_address_city"}
                   .form-group
-                    = form.label :番地　　　　　　　
+                    = form.label :番地　　　　　　
                     = form.text_field :address_street, {placeholder: "4-5-6",class: 'order-form',id: "user_address_street"}
                   .form-group
                     = form.label :ビル　　　　　　
                     = form.text_field :address_building, {placeholder: "新山麓荘",class: 'order-form'}
+                  .form-group
+                    = form.label :宛名　　　　　　
+                    = form.text_field :name, {placeholder: "",class: 'order-form'}
 
 
             = form.submit '確認画面へ進む', class:"btn btn-primary"

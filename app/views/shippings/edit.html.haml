@@ -1,0 +1,40 @@
+.main-section
+  .header
+    -if user_signed_in?
+      =render "template/header_login"
+    -else
+      =render "template/header_unlogin"
+.container
+  = form_for(@shipping, url: shipping_path(@shipping), method: :patch) do |f|
+    .row
+      .col-lg-3
+        %b 郵便番号(ハイフンなし)
+      .col-lg-3
+        = f.text_field :postcode, autocomplete: "off"
+    .row
+      .col-lg-3
+        %b 都道府県
+      .col-lg-3
+        = f.text_field :prefecture_code, autocomplete: "off" ,style:"width:100%"
+    .row
+      .col-lg-3
+        %b 市区町村
+      .col-lg-4
+        = f.text_field :address_city, autocomplete: "off" ,style:"width:100%"
+    .row
+      .col-lg-3
+        %b 番地
+      .col-lg-4
+        = f.text_field :address_street, autocomplete: "off" ,style:"width:100%"
+    .row
+      .col-lg-3
+        %b ビル
+      .col-lg-3
+        = f.text_field :address_building, autocomplete: "off" ,style:"width:100%"
+    .row
+      .col-lg-3
+        %b 宛名
+      .col-lg-8
+        = f.text_field :name, autocomplete: "off"
+        %span{:style => "float: right"}
+          = f.submit "登録する", class:"btn btn-warning", style:"padding:5px 20px;"

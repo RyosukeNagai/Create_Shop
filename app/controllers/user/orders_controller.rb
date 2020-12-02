@@ -11,6 +11,25 @@ class User::OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new(order_params) # 新規でオーダーのパラメーター受けとるための
+    @order.user_id = current_user.id # オーダーとユーザーの紐付け
+    if @order.save
+      cart_items = current_user.cart_items # カートアイテムを全取得
+      cart_items.each do |cart_item|
+        order_detail = @order.order_details.new # 履歴の空を作成、オーダーと履歴紐付け
+        order_detail.product_id = cart_item.product_id # カートの商品を取得
+        order_detail.count = cart_item.count
+        order_detail.price = cart_item.product.price
+        order_detail.save  # 注文履歴をセーブ
+        cart_item.destroy  # カート内アイテムを空に削除
+      end
+      redirect_to user_orders_complete_path
+    else
+      redirect_to new_user_order_path
+    end
+  end
+
+  def complete
   end
 
   def show
@@ -26,7 +45,7 @@ class User::OrdersController < ApplicationController
       @order.address_city = current_user.address_city
       @order.address_street = current_user.address_street
       @order.address_building = current_user.address_building
-      @order.name = current_user.first_name
+      @order.name = current_user.last_name + current_user.first_name
 
     elsif params[:addresses] == "2"
       @shipping = Shipping.find(params[:select_address])

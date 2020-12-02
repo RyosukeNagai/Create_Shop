@@ -8,6 +8,9 @@ class Admin::OrdersController < ApplicationController
       @orders = Order.all.order(id: "DESC")
 	end
 
+	def show
+	end
+
 	private
 
 	def order_params

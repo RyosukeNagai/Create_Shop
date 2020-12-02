@@ -1,0 +1,12 @@
+.main-section
+  .header
+    -if user_signed_in?
+      =render "template/header_login"
+    -else
+      =render "template/header_unlogin"
+.container-box
+  .row
+    .col-lg-12
+      %h3.complete
+        %strong NAGANO CAKE でのお買い上げありがとうございます！
+      %p.complete-title 〜ご注文を承りました。発送手続きに入ります。引続きショッピングをお楽しみ下さい。〜
