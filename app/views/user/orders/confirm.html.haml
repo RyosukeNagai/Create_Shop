@@ -25,7 +25,7 @@
           %tr
             %td
               = attachment_image_tag order_product.product, :image, |
-                format: 'jpg', size: "80x50", fallback:"no_image.jpg"       |
+                format: 'jpg', size: "80x50", fallback:"top_page.jpg"       |
               = order_product.product.name
             %td.align-middle= (order_product.product.price * 1.1).to_i
             %td.align-middle= order_product.count
@@ -45,33 +45,28 @@
           %td.align-middle= (@sum + 800).to_i
   .row
     .col-lg-12
-      %div
-        %span
-        支払い方法 :
+      %div{:style => "margin-bottom: 20px"}
+        %span{:style => "font-weight: bold;font-size: 18px;"} 支払い方法：
         = @order.payment_method
       %div{:style => "margin-bottom: 20px"}
-        %span{:style => "font-weight: bold;font-size: 18px;"} お届け先	  ：
+        %span{:style => "font-weight: bold;font-size: 18px;"} お届け先    ：
         = @order.postcode
         = @order.prefecture_code
         = @order.address_city
         = @order.address_street
         = @order.address_building
-        = @order.name
         %br/
-
-      = form_with model: @order, url: user_orders_path, method: :post, local: true do |f|
+        %span{:style => "margin-left: 100px;"}= @order.name
+      = form_with(url:order_create_path,  local: true) do |f|
+        = f.hidden_field :name, value: @order.name
         = f.hidden_field :payment_method, value: @order.payment_method
         = f.hidden_field :postcode, value: @order.postcode
+        = f.hidden_field :order_status, value: "入金待ち"
         = f.hidden_field :prefecture_code, value: @order.prefecture_code
         = f.hidden_field :address_city, value: @order.address_city
         = f.hidden_field :address_street, value: @order.address_street
         = f.hidden_field :address_building, value: @order.address_building
-        = f.hidden_field :name, value: @order.name
-        = f.hidden_field :order_status, value: "入金待ち"
         = f.hidden_field :postage, value: 800
         = f.hidden_field :total_price, value: @sum
-
-
         %div{:style => "text-align: center"}
           = f.submit "購入を確定する" ,class:"btn btn-success"
-          

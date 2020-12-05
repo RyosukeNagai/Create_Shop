@@ -25,7 +25,10 @@
             = order.created_at.strftime('%Y/%m/%d')
           %td.align-middle
             = order.postcode
-            = order.address
+            = order.prefecture_code
+            = order.address_city
+            = order.address_street
+            = order.address_building
             %br/
             = order.name
           %td.align-middle
@@ -33,8 +36,8 @@
               = order_detail.product.name
               %br/
           %td.align-middle
-            = order.total_products_cost.to_i + order.postage.to_i
+            = order.total_price.to_i + order.postage.to_i
             円
           %td.align-middle= order.order_status
           %td.align-middle
-            = link_to "表示する", users_order_path(order), class:'btn btn-primary'
+            = link_to "表示する", order_show_path(order), class:'btn btn-primary'

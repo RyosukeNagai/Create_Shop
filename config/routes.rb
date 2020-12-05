@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -10,11 +11,17 @@ Rails.application.routes.draw do
   registrations: 'users/registrations'
   }
 
+  root "products#index"
+  get 'top/about' => 'top#about'
+  get "users/delete" => "users#delete", as: "users_delete"
+  resources :users, only: [:show, :index, :edit, :update, :destroy]
+
   namespace :admin do
     get 'top'=>'orders#top'
     resources :products,only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :users,only: [:index, :show, :edit, :update]
     resources :orders,only: [:index, :show]
+    resources :order_details,only: [:update]
     resources :categories,only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
@@ -27,18 +34,15 @@ Rails.application.routes.draw do
     get 'cart_items/confirm' => "user/cart_items#confirm"
     delete 'cart_items/destroy_all' => "user/cart_items#destroy_all", as: "cart_items_destroy_all"
     get 'new/user/order' => "user/orders#new"
-    get 'user/orders/:id' => "user/orders#show"
+    get 'user/orders/:id' => "user/orders#show", as: "order_show"
     get 'user/orders' => "user/orders#index"
-    post 'user/orders' => "user/orders#create"
+    post 'user/orders' => "user/orders#create", as: "order_create"
     get 'orders/complete' => "user/orders#complete"
-    post 'user/orders/confirm' => "user/orders#confirm"
+    post 'orders/confirm' => "user/orders#confirm"
     resources :products, only: [:show]
     resources :shippings
   end
-  root "products#index"
-  get 'top/about' => 'top#about'
-  get "users/delete" => "users#delete", as: "users_delete"
-  resources :users, only: [:show, :index, :edit, :update, :destroy]
+  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

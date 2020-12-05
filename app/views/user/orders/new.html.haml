@@ -14,7 +14,7 @@
       %h3.order-page-title
         @支払方法
         .field.user-postcode
-          = form_with(url:user_orders_confirm_path, local: true) do |form|
+          = form_with(url:orders_confirm_path, local: true) do |form|
             %label
               = form.radio_button :payment_method,"クレジットカード"
               クレジットカード
