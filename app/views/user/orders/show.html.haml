@@ -1,0 +1,63 @@
+.main-section
+  .header
+    -if user_signed_in?
+      =render "template/header_login"
+    -else
+      =render "template/header_unlogin"
+.container
+  .row
+    .col-xs-3
+      %h3{:style => "margin-bottom:30px;"}
+        %span.head-text 注文履歴詳細
+  .row
+    .col-lg-8
+      %strong 注文情報
+      %table.table.table-bordered
+        %tr
+          %th.table-active 注文日
+          %td
+            = @order.created_at.strftime('%Y/%m/%d')
+        %tr
+          %th.table-active 配送先
+          %td
+            = @order.postcode
+            %br/
+            = @order.prefecture_code
+            %br/
+            = @order.name
+        %tr
+          %th.table-active 支払方法
+          %td
+            = @order.payment_method
+        %tr
+          %th.table-active ステータス
+          %td= @order.order_status
+    .col-lg-4
+      %strong 請求情報
+      %table.table.table-bordered
+        %tbody
+          %tr
+            %th.table-active 商品合計
+            %td= @order.total_price
+          %tr
+            %th.table-active 配送料
+            %td= @order.postage
+          %tr
+            %th.table-active ご請求額
+            %td= @order.total_price.to_i + @order.postage.to_i
+  %strong 注文内容
+  %table.table.table-bordered
+    %thead.thead-light
+      %tr
+        %th 商品
+        %th 単価（税込）
+        %th 個数
+        %th 小計
+    %tbody
+      - @order_details.each do |order_detail|
+        %tr
+          %td
+            = order_detail.product.name
+          %td= (order_detail.product.price * 1.1).to_i
+          %td= order_detail.count
+          %td= (order_detail.product.price * order_detail.count * 1.1).to_i

@@ -23,7 +23,7 @@ class User::OrdersController < ApplicationController
         order_detail.save  # 注文履歴をセーブ
         cart_item.destroy  # カート内アイテムを空に削除
       end
-      redirect_to user_orders_complete_path
+      redirect_to orders_complete_path
     else
       redirect_to new_user_order_path
     end
@@ -33,6 +33,8 @@ class User::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   def confirm

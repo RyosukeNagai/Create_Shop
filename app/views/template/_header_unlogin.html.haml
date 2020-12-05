@@ -6,7 +6,7 @@
           %i.fas.fa-search
       .nav-list
         %li
-          = link_to ' HOME', root_path, class: 'nav-list-home'
+          = link_to ' HOMES', root_path, class: 'nav-list-home'
           = link_to ' ABOUT', top_about_path, class: 'nav-list-about'
           = link_to ' CATEGORY', "#", class: 'nav-list-category'
           = link_to root_path, method: :get do
@@ -14,11 +14,6 @@
       %li.nav-login
         = link_to new_user_session_path, method: :get do
           %p.nav-login__title LOGIN
-        %ul
-          %li
-            = link_to ' LOGIN', new_user_session_path, class: ''
-          %li
-            = link_to ' SIGN_IN', new_user_registration_path, class: ''
       %li.nav-cart
         = link_to cart_items_confirm_path, method: :get do
           %i.fas.fa-shopping-cart

@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
 	def index
-      @users = User.all
+	  @users = User.all.page(params[:page]).per(10)
 	end
 
 	def show
@@ -12,7 +12,9 @@ class Admin::UsersController < ApplicationController
 	end
 
 	def update
-	  @user = User.find(params[:id])
+	  @user = current_user
+	  @user.update(user_params)
+	  redirect_to user_path
 	end
 
 	private

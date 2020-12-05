@@ -1,0 +1,81 @@
+=render "template/header_admin"
+.order-show
+  .row
+    .col-xs-9
+      %h3.page-title
+        注文履歴詳細
+      .field
+        .col-xs-3
+          %b 購入者
+        .col-xs-8
+          = @order.name
+      .field
+        .col-xs-3
+          %b 配送先
+        .col-xs-8
+          = @order.postcode
+          = @order.prefecture_code
+          = @order.address_city
+          = @order.address_street
+          = @order.address_building
+      .field
+        .col-xs-3
+          %b 支払い方法
+        .col-xs-8
+          = @order.payment_method
+      = form_for(@order, url: admin_order_path, method: :patch) do |f|
+        .col-xs-3 
+          %b 注文ステータス
+        .col-xs-6
+          = f.select :order_status, Order.order_statuses.keys, class: "order_status"
+        .actions
+          .col-xs-2= f.submit '更新'  ,class: "btn btn-warning"
+    .buyer-order.col-xs-9
+      %table.table.table-hover.table-bordered.table-inverse
+        %thead
+          %tr.info
+            %th.col-xs-4 商品名
+            %th 単価（税込）
+            %th 数量
+            %th 小計
+            %th 製作ステータス
+        %tbody
+          - if flash[:notice]
+            .flash
+              = flash[:notice]
+          - @sum = 0
+          - @order_details.each do |order_detail|
+            %tr
+              %td.text-left
+                = order_detail.product.name
+              %td.text-right
+                ¥
+                = (order_detail.product.price * 1.1).to_i
+              %td.text-right
+                = order_detail.count
+              %td.text-right
+                = (order_detail.product.price * 1.1 * order_detail.count).to_i
+                - @sum += (order_detail.product.price * 1.1 * order_detail.count)
+              %td.text-right
+                = form_for(order_detail ,url: admin_order_detail_path(order_detail),html: {method: "patch"}) do |f|
+                  = f.select :work_status, OrderDetail.work_statuses.keys
+                  = f.submit "更新", class:"btn btn-warning btn-sm"
+    .col-lg-4
+      .row
+        .col-lg-6>
+          %p 商品合計
+          %p 送料
+          %p 請求金額合計
+        .col-lg-6
+          %p
+            = @sum.to_i
+            円
+          %p
+            = @order.postage
+            円
+          %p
+            = @order.total_price.to_i + @order.postage.to_i
+            円
+
+
+

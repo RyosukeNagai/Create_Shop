@@ -41,6 +41,7 @@
         = f.label :電話番号　　　　
         %i.fas.fa-phone-alt
         = f.text_field :phone_number, {placeholder: "例) 09012345678",class:'form-group__input--half'}
+        = f.hidden_field :is_active, value: "有効"
 
       .actions
         = f.submit "確認", class: "btn btn-primary btn-lg btn-block"

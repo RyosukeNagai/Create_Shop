@@ -20,4 +20,6 @@
 
               %td= user.email
               %td= user.is_active
-              
+        .col-lg-10
+        .col-lg-2
+          = paginate (@users)

@@ -13,3 +13,4 @@ User.create!(
     email: 'a@a',
     password: 'aaaaaa',
   )
+Category.create(category_id: 1, name: "靴", is_active: "販売中")
