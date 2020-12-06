@@ -44,10 +44,10 @@
 
 ### Association
  -has_many: products, through: :cart_items, source: :product<br>
- -has_many :orders, dependent: :destroy
- -has_many :orders, dependent: :destroy
- -has_many :cart_items, dependent: :destroy
- -has_many :shippings, dependent: :destroy
+ -has_many :orders, dependent: :destroy<br>
+ -has_many :orders, dependent: :destroy<br>
+ -has_many :cart_items, dependent: :destroy<br>
+ -has_many :shippings, dependent: :destroy<br>
  -enum is_active: { 退会済: false, 有効: true }
 
 ## adminテーブル
@@ -66,8 +66,8 @@
 |count|integer|
 
 ### Association
- -belongs_to :user
- -belongs_to :product
+ -belongs_to :user<br>
+ -belongs_to :product<br>
 
 ## categoryテーブル
 |Column|Type|
@@ -77,8 +77,8 @@
 |user_id|integer|
 
 ### Association
- -has_many :products, dependent: :destroy
- -enum is_active: { 無効: false, 有効: true }
+ -has_many :products, dependent: :destroy<br>
+ -enum is_active: { 無効: false, 有効: true }<br>
 
 ## orderテーブル
 |Column|Type|
@@ -94,10 +94,11 @@
 |payment_method|boolean|
 |order_status|integer|
 ### Association
- -belongs_to :user
- -has_many :order_details, dependent: :destroy
- -enum payment_method: { 銀行振込: false, クレジットカード: true }
- -enum order_status: { 入金待ち: 0, 入金確認: 1, 製作中: 2, 発送準備中: 3, 発送済み: 4 }
+ -belongs_to :user<br>
+ -has_many :order_details, dependent: :destroy<br>
+ -enum payment_method: { 銀行振込: false, クレジットカード: true }<br>
+ 
+ -enum order_status: { 入金待ち: 0, 入金確認: 1, 製作中: 2, 発送準備中: 3, 発送済み: 4 }<br>
 
 ## order_detailテーブル
 |Column|Type|
@@ -109,9 +110,9 @@
 |work_status|integer|
 
 ### Association
- -belongs_to :product
- -belongs_to :order
- -enum work_status: { 着手不可: 0, 制作待ち: 1, 製作中: 2, 制作完了: 3 }
+ -belongs_to :product<br>
+ -belongs_to :order<br>
+ -enum work_status: { 着手不可: 0, 制作待ち: 1, 製作中: 2, 制作完了: 3 }<br>
 
 ## shippingテーブル
 |Column|Type|
@@ -125,5 +126,5 @@
 |address_building|string|
 
 ### Association
- -belongs_to :user
+ -belongs_to :user<br>
 
