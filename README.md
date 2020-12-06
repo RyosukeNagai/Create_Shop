@@ -25,6 +25,12 @@
  - gem 'gretel'
  - gem 'paranoia'
 
+# log-in/sign-up/view
+![image](https://user-images.githubusercontent.com/64464083/101274293-2a7d7880-37e0-11eb-8381-495018f77ab5.png)
+
+# user/my-page/view
+![image](https://user-images.githubusercontent.com/64464083/101274398-18e8a080-37e1-11eb-801a-36f1be4f9b66.png)
+
 ## usersテーブル
 |Column|Type|
 |------|----|
@@ -49,6 +55,9 @@
  -has_many :cart_items, dependent: :destroy<br>
  -has_many :shippings, dependent: :destroy<br>
  -enum is_active: { 退会済: false, 有効: true }
+
+# admin/log-in/view
+![image](https://user-images.githubusercontent.com/64464083/101274562-9234c300-37e2-11eb-817d-99167c6e3ea0.png)
 
 ## adminテーブル
 |Column|Type|

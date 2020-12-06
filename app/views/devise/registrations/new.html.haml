@@ -14,8 +14,8 @@
         = f.password_field :password,{autocomplete: "new-password",placeholder: "6文字以上の半角英数字",class:'form-group__input',id:"password"}
       .form-group
         = f.label :"お名前　　　　　　"
-        = f.text_field :last_name, {placeholder:"例) 八村",class:'form-group__input--half'}
-        = f.text_field :first_name, {placeholder:"例) 塁",class:'form-group__input--half'}
+        = f.text_field :last_name, {class:'form-group__input--half'}
+        = f.text_field :first_name, {class:'form-group__input--half'}
       .form-group
         = f.label :メールアドレス　
         %i.fas.fa-envelope
@@ -36,7 +36,7 @@
       .form-group
         = f.label :ビル　　　　　　
         %i.fas.fa-building
-        = f.text_field :address_building, {placeholder: "新山麓荘",class:'form-group__input'}
+        = f.text_field :address_building, {placeholder: "",class:'form-group__input'}
       .form-group
         = f.label :電話番号　　　　
         %i.fas.fa-phone-alt
